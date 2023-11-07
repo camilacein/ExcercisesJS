@@ -52,7 +52,55 @@ console.log(`${nombre} no existe`)
 }
 console.log(buscarPosicion("Buzz"))
 //9
-for(beer of beers){
-console.log(beer.abv)}
-function bebidaMenosAlcoholica (cerveza,cerveza1){
+function filtrarCervezasPorAlcohol (beers, valor){
+    let nuevoArray = []
+    for(let i = 0; i < beers.length; i++){
+    const retornarFun = valor(beers[i], i, beers)
+    nuevoArray.push(retornarFun)
+    }
+    return nuevoArray
 }
+function encontrarPropiedad (beers, valor){
+let noExcedanAbv=(beers.filter(beer=> beer.abv <=valor))
+.map((beer)=>{
+const beersNew={
+name: beer.name,
+abv: beer.abv,
+ibu: beer.ibu,
+}
+return beersNew
+})
+return noExcedanAbv
+}
+console.log(encontrarPropiedad(beers, 6.3))
+//10
+function cansadaDeLasBirras(array, propiedad, booleano){
+const ordenarBirras = array.toSorted((a,b)=>{
+if(a[propiedad]<b[propiedad]){
+return -1
+}
+if(a[propiedad]>b[propiedad]){
+return 1
+}
+return booleano
+}
+).map(array=>array.name)
+return ordenarBirras.slice(0,10)
+}
+console.log(cansadaDeLasBirras(beers, "name", true))
+//11
+function rellenarTabla(beers, id){
+const buscartable = document.getElementById("tablanueva")
+
+function crearFila (array){
+let tabla= `<tr>
+<td>${beersNew.name}</td>
+<td>${beersNew.abv}</td>
+<td>${beersNew.ibu}</td>
+
+</tr>`
+return tabla
+}
+/*usar map*/
+}
+console.log(crearTabla(beersNew, ))

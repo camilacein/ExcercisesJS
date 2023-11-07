@@ -84,23 +84,27 @@ return 1
 }
 return booleano
 }
-).map(array=>array.name)
+)/*.map(array=>array.name)*/
 return ordenarBirras.slice(0,10)
 }
 console.log(cansadaDeLasBirras(beers, "name", true))
 //11
 function rellenarTabla(beers, id){
-const buscartable = document.getElementById("tablanueva")
+const buscartable = document.getElementById(id)
 
-function crearFila (array){
-let tabla= `<tr>
-<td>${beersNew.name}</td>
-<td>${beersNew.abv}</td>
-<td>${beersNew.ibu}</td>
+function crearFila (beer){
+let fila= `<tr>
+<td>${beer.name}</td>
+<td>${beer.abv}</td>
+<td>${beer.ibu}</td>
 
 </tr>`
-return tabla
+return fila
+}
+beers.forEach(beer => {
+    let fila2=crearFila(beer)
+    buscartable.innerHTML+=fila2
+});
 }
 /*usar map*/
-}
-console.log(crearTabla(beersNew, ))
+rellenarTabla(cansadaDeLasBirras(beers,"name", true), "tbody")
